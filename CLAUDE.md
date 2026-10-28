@@ -113,5 +113,5 @@ Push to any branch triggers GitHub Actions (`push.yml`): a `lint` job (format ch
 
 - Branch prefixes: `feature/*`, `bugfix/*`, `hotfix/*`
 - PRs from `feature/*` auto-labeled `enhancement`; `bugfix/*`/`hotfix/*` labeled `bug`
-- Push to `develop` creates a release PR to `main`
-- Push to `main` auto-generates a release tag (`v{YYYY.MM.DD}-{count}`)
+- Push to `develop` creates a release PR to `main`, or refreshes the list of unreleased PRs in its body. It is opened with `GITHUB_TOKEN`, so it triggers no `pull_request` workflow — fine while CI runs on `push`; switch to a GitHub App token before adding a `pull_request` workflow
+- Push to `main` auto-generates a release tag (`v{YYYY.MM.DD}-{count}`), using the release PR's body as the notes

@@ -1,7 +1,7 @@
 import { type RenderResult, cleanup, render } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 
-import { LayoutSection } from '~/components/ui/layouts/Section'
+import { LayoutSection } from '~/components/ui/layouts/LayoutSection'
 
 describe('LayoutSection', () => {
   let result: RenderResult

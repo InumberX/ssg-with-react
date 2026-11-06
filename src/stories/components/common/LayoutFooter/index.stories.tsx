@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Header } from '~/components/common/Header'
+import { LayoutFooter } from '~/components/common/LayoutFooter'
 import { type Metadata } from '~/types/metadata'
 
 const metadata: Metadata = {
@@ -8,11 +8,11 @@ const metadata: Metadata = {
 }
 
 export default {
-  title: 'components/common/Header',
-  component: Header,
-} as Meta<typeof Header>
+  title: 'components/common/LayoutFooter',
+  component: LayoutFooter,
+} as Meta<typeof LayoutFooter>
 
-type Story = StoryObj<typeof Header>
+type Story = StoryObj<typeof LayoutFooter>
 
 export const Default: Story = {
   args: {

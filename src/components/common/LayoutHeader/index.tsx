@@ -1,14 +1,14 @@
 import { PrimitiveButton } from '~/components/primitives/buttons/PrimitiveButton'
-import { LayoutInner } from '~/components/ui/layouts/Inner'
+import { LayoutInner } from '~/components/ui/layouts/LayoutInner'
 import { routes } from '~/config/routes'
 import { type Metadata } from '~/types/metadata'
 
-type HeaderProps = {
+type LayoutHeaderProps = {
   metadata: Metadata
   isLogoTitle?: boolean
 }
 
-export const Header = ({ metadata }: HeaderProps) => {
+export const LayoutHeader = ({ metadata }: LayoutHeaderProps) => {
   return (
     <header className='LayoutHeader'>
       <LayoutInner>

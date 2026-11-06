@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { LayoutPageWrapper } from '~/components/ui/layouts/PageWrapper'
+import { LayoutPageWrapper } from '~/components/ui/layouts/LayoutPageWrapper'
 
 export default {
-  title: 'components/ui/layouts/PageWrapper',
+  title: 'components/ui/layouts/LayoutPageWrapper',
   component: LayoutPageWrapper,
 } as Meta<typeof LayoutPageWrapper>
 

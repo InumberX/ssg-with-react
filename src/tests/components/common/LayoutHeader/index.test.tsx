@@ -1,10 +1,10 @@
 import { type RenderResult, cleanup, render } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 
-import { Header } from '~/components/common/Header'
+import { LayoutHeader } from '~/components/common/LayoutHeader'
 import { type Metadata } from '~/types/metadata'
 
-describe('Header', () => {
+describe('LayoutHeader', () => {
   let result: RenderResult
 
   const metadata: Metadata = {
@@ -19,7 +19,7 @@ describe('Header', () => {
   describe('ルートページ', () => {
     // テスト開始前の処理
     beforeEach(() => {
-      result = render(<Header metadata={metadata} />)
+      result = render(<LayoutHeader metadata={metadata} />)
     })
 
     test('ナビゲーションのリンクが正常に出力されている', () => {
@@ -39,7 +39,7 @@ describe('Header', () => {
   describe('下層ページ', () => {
     // テスト開始前の処理
     beforeEach(() => {
-      result = render(<Header metadata={{ rootDir: '../' }} />)
+      result = render(<LayoutHeader metadata={{ rootDir: '../' }} />)
     })
 
     test('rootDirに応じてリンク先が変化する', () => {

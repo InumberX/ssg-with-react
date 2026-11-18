@@ -39,24 +39,24 @@ Minista v4 generates the `<html>`/`<head>`/`<body>` shell itself and wraps every
 
 ```
 src/layouts/index.tsx (global layout: SEO meta via <Head>, global scripts, <html lang>)
-  └── LayoutPageWrapper (components/ui/layouts/PageWrapper)
+  └── LayoutPageWrapper (components/ui/layouts/LayoutPageWrapper)
       └── Page component (src/pages/*)
-          └── LayoutDefault (layouts/Base: Header + Main + Footer)
+          └── LayoutDefault (layouts/LayoutDefault: LayoutHeader + Main + LayoutFooter)
               └── page content
 ```
 
-Pages use file-based routing in `src/pages/` and export a `metadata` object (the v4 name minista reads) for page metadata (title, description, noindex, draft, rootDir, etc.). Minista spreads each page's `metadata` (plus `url`) into the props of both the global layout and the page component. Within the component tree this object is passed around as the `metadata` prop (type `Metadata`), which Header/Footer/LayoutDefault require. The `rootDir` property sets the relative path back to root (`'./'` for root pages, `'../'` for one level deep, etc.) and is used to construct all internal URLs; the global layout reads minista's `url` prop for canonical/OG URLs.
+Pages use file-based routing in `src/pages/` and export a `metadata` object (the v4 name minista reads) for page metadata (title, description, noindex, draft, rootDir, etc.). Minista spreads each page's `metadata` (plus `url`) into the props of both the global layout and the page component. Within the component tree this object is passed around as the `metadata` prop (type `Metadata`), which LayoutHeader/LayoutFooter/LayoutDefault require. The `rootDir` property sets the relative path back to root (`'./'` for root pages, `'../'` for one level deep, etc.) and is used to construct all internal URLs; the global layout reads minista's `url` prop for canonical/OG URLs.
 
 ### Key Directories (under `src/`)
 
 - `pages/` — File-based routes; each page exports `metadata` + default component
 - `layouts/index.tsx` — Global layout minista wraps every page in (SEO `<Head>`, global scripts, CSS entry)
-- `layouts/Base/` — LayoutDefault (Header/Footer shell)
-- `components/common/` — Header, Footer
+- `layouts/LayoutDefault/` — LayoutDefault (LayoutHeader/LayoutFooter shell)
+- `components/common/` — LayoutHeader, LayoutFooter
 - `components/ui/layouts/` — PageWrapper, Section, Inner (structural wrappers)
 - `components/pages/` — Page-specific components
 - `config/routes.ts` — Route definitions with metadata; URL functions take `{ rootDir }` param
-- `config/siteInfo.json` — Site-wide metadata (title, URL, Twitter)
+- `config/site-info.json` — Site-wide metadata (title, URL, Twitter)
 - `types/` — Shared TypeScript type definitions
 - `assets/css/style.css` — Main CSS entry using CSS Layers
 - `assets/post-css/global/` — CSS custom properties (color, font, layout, z-index, breakpoints)
@@ -112,6 +112,5 @@ Push to any branch triggers GitHub Actions (`push.yml`): a `lint` job (format ch
 ## Git Workflow
 
 - Branch prefixes: `feature/*`, `bugfix/*`, `hotfix/*`
-- PRs from `feature/*` auto-labeled `enhancement`; `bugfix/*`/`hotfix/*` labeled `bug`
-- Push to `develop` creates a release PR to `main`
-- Push to `main` auto-generates a release tag (`v{YYYY.MM.DD}-{count}`)
+- Push to `develop` creates a release PR to `main`, or refreshes the list of unreleased PRs in its body. It is opened with `GITHUB_TOKEN`, so any `pull_request` workflow it starts waits for a manual approval — fine while CI runs on `push`; switch to a GitHub App token before adding a `pull_request` workflow
+- Push to `main` auto-generates a release tag (`v{YYYY.MM.DD}-{count}`), using the release PR's body as the notes

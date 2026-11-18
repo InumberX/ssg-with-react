@@ -1,8 +1,8 @@
 import { Head } from 'minista/head'
 import { type ReactNode } from 'react'
 
-import { LayoutWrapper } from '~/components/ui/layouts/Wrapper'
-import siteInfo from '~/config/siteInfo.json'
+import { LayoutWrapper } from '~/components/ui/layouts/LayoutWrapper'
+import siteInfo from '~/config/site-info.json'
 import { type Metadata } from '~/types/metadata'
 
 type LayoutProps = Metadata & {

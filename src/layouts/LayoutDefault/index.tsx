@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 
-import { Footer } from '~/components/common/Footer'
-import { Header } from '~/components/common/Header'
+import { LayoutFooter } from '~/components/common/LayoutFooter'
+import { LayoutHeader } from '~/components/common/LayoutHeader'
 import { type Metadata } from '~/types/metadata'
 
 type LayoutDefaultProps = {
@@ -17,9 +17,9 @@ export const LayoutDefault = ({
 }: LayoutDefaultProps) => {
   return (
     <>
-      <Header metadata={metadata} isLogoTitle={isLogoTitle} />
+      <LayoutHeader metadata={metadata} isLogoTitle={isLogoTitle} />
       <main className='LayoutMain'>{children}</main>
-      <Footer metadata={metadata} />
+      <LayoutFooter metadata={metadata} />
     </>
   )
 }

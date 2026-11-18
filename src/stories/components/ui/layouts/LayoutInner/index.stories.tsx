@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { LayoutSection } from '~/components/ui/layouts/Section'
+import { LayoutInner } from '~/components/ui/layouts/LayoutInner'
 
 export default {
-  title: 'components/ui/layouts/Section',
-  component: LayoutSection,
-} as Meta<typeof LayoutSection>
+  title: 'components/ui/layouts/LayoutInner',
+  component: LayoutInner,
+} as Meta<typeof LayoutInner>
 
-type Story = StoryObj<typeof LayoutSection>
+type Story = StoryObj<typeof LayoutInner>
 
 export const Default: Story = {
   render: (args) => {
     return (
-      <LayoutSection {...args}>
+      <LayoutInner {...args}>
         <>
           コンテンツが入ります
           <br />
           テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
         </>
-      </LayoutSection>
+      </LayoutInner>
     )
   },
 }

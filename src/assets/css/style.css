@@ -11,9 +11,9 @@
 @import '../post-css/utils/index.css';
 @import '../post-css/no-layer/index.css';
 @import '../../components/primitives/buttons/PrimitiveButton/style.css';
-@import '../../components/common/Footer/style.css';
-@import '../../components/common/Header/style.css';
-@import '../../components/ui/layouts/Inner/style.css';
-@import '../../components/ui/layouts/PageWrapper/style.css';
-@import '../../components/ui/layouts/Section/style.css';
-@import '../../components/ui/layouts/Wrapper/style.css';
+@import '../../components/common/LayoutFooter/style.css';
+@import '../../components/common/LayoutHeader/style.css';
+@import '../../components/ui/layouts/LayoutInner/style.css';
+@import '../../components/ui/layouts/LayoutPageWrapper/style.css';
+@import '../../components/ui/layouts/LayoutSection/style.css';
+@import '../../components/ui/layouts/LayoutWrapper/style.css';

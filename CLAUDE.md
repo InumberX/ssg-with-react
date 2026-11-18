@@ -39,24 +39,24 @@ Minista v4 generates the `<html>`/`<head>`/`<body>` shell itself and wraps every
 
 ```
 src/layouts/index.tsx (global layout: SEO meta via <Head>, global scripts, <html lang>)
-  └── LayoutPageWrapper (components/ui/layouts/PageWrapper)
+  └── LayoutPageWrapper (components/ui/layouts/LayoutPageWrapper)
       └── Page component (src/pages/*)
-          └── LayoutDefault (layouts/Base: Header + Main + Footer)
+          └── LayoutDefault (layouts/LayoutDefault: LayoutHeader + Main + LayoutFooter)
               └── page content
 ```
 
-Pages use file-based routing in `src/pages/` and export a `metadata` object (the v4 name minista reads) for page metadata (title, description, noindex, draft, rootDir, etc.). Minista spreads each page's `metadata` (plus `url`) into the props of both the global layout and the page component. Within the component tree this object is passed around as the `metadata` prop (type `Metadata`), which Header/Footer/LayoutDefault require. The `rootDir` property sets the relative path back to root (`'./'` for root pages, `'../'` for one level deep, etc.) and is used to construct all internal URLs; the global layout reads minista's `url` prop for canonical/OG URLs.
+Pages use file-based routing in `src/pages/` and export a `metadata` object (the v4 name minista reads) for page metadata (title, description, noindex, draft, rootDir, etc.). Minista spreads each page's `metadata` (plus `url`) into the props of both the global layout and the page component. Within the component tree this object is passed around as the `metadata` prop (type `Metadata`), which LayoutHeader/LayoutFooter/LayoutDefault require. The `rootDir` property sets the relative path back to root (`'./'` for root pages, `'../'` for one level deep, etc.) and is used to construct all internal URLs; the global layout reads minista's `url` prop for canonical/OG URLs.
 
 ### Key Directories (under `src/`)
 
 - `pages/` — File-based routes; each page exports `metadata` + default component
 - `layouts/index.tsx` — Global layout minista wraps every page in (SEO `<Head>`, global scripts, CSS entry)
-- `layouts/Base/` — LayoutDefault (Header/Footer shell)
-- `components/common/` — Header, Footer
+- `layouts/LayoutDefault/` — LayoutDefault (LayoutHeader/LayoutFooter shell)
+- `components/common/` — LayoutHeader, LayoutFooter
 - `components/ui/layouts/` — PageWrapper, Section, Inner (structural wrappers)
 - `components/pages/` — Page-specific components
 - `config/routes.ts` — Route definitions with metadata; URL functions take `{ rootDir }` param
-- `config/siteInfo.json` — Site-wide metadata (title, URL, Twitter)
+- `config/site-info.json` — Site-wide metadata (title, URL, Twitter)
 - `types/` — Shared TypeScript type definitions
 - `assets/css/style.css` — Main CSS entry using CSS Layers
 - `assets/post-css/global/` — CSS custom properties (color, font, layout, z-index, breakpoints)
@@ -103,7 +103,7 @@ Vitest with `jsdom` and `@testing-library/react`. Config in `vitest.config.ts` (
 - **Formatting**: Single quotes, no semicolons, 2-space indent, trailing commas (oxfmt, configured in `.oxfmtrc.json`)
 - **Imports**: Grouped with newlines between groups, sorted (oxfmt `sortImports`)
 - **Lint**: oxlint (`.oxlintrc.json`), TypeScript- and React-aware (`typescript`/`react` plugins)
-- **Node**: >= 24.0.0 (managed via Volta at 24.16.0)
+- **Node**: >= 24.0.0 (pinned to 24.16.0 in `.node-version`)
 
 ## CI
 
